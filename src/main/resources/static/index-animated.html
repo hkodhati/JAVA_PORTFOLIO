@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemanth Kumar Kodhati | Java Developer Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+    <style>
+        body {
+            font-family: 'Montserrat', 'Roboto', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #10101a 0%, #23234a 100%);
+            color: #f8fafc;
+        }
+        header {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 60px 0 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.3rem;
+            margin: 0 0 20px 0;
+        }
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        section {
+            max-width: 900px;
+            margin: 60px auto;
+            background: #20203a;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(100,100,200,0.08);
+            padding: 48px 32px;
+            position: relative;
+        }
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+            color: #ffd700;
+        }
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .about img {
+            width: 120px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        }
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .skills {
+            margin-top: 32px;
+        }
+        .skill-bar {
+            margin-bottom: 18px;
+        }
+        .skill-label {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #cbd5e1;
+        }
+        .bar-bg {
+            background: #23234a;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 18px;
+        }
+        .bar-fill {
+            height: 18px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #10b981 0%, #6366f1 100%);
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .project-card {
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(120,80,200,0.10);
+            padding: 24px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(120,80,200,0.18);
+        }
+        .project-card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .project-desc {
+            font-size: 1rem;
+            color: #333;
+        }
+        .experience {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .exp-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .exp-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #eee;
+        }
+        .exp-details {
+            flex: 1;
+        }
+        .exp-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .exp-period {
+            color: #888;
+            font-size: 0.95rem;
+        }
+        .exp-desc {
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .contact-form button {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .contact-form button:hover {
+            background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+        }
+        .game-section {
+            margin: 60px auto;
+            max-width: 600px;
+            background: #18182f;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(100,100,200,0.08);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .game-title {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 18px;
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 16px;
+            justify-content: center;
+            margin: 0 auto 18px auto;
+            max-width: 260px;
+        }
+        .game-cell {
+            background: #23234a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #10b981;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            width: 80px;
+            height: 80px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .game-cell:hover {
+            background: #6366f1;
+            color: #fff;
+            transform: scale(1.1);
+        }
+        .game-status {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+        }
+        @media (max-width: 900px) {
+            .game-board { grid-template-columns: repeat(3, 60px); grid-template-rows: repeat(3, 60px); gap: 10px; max-width: 200px; }
+            .game-cell { width: 60px; height: 60px; font-size: 1.5rem; }
+        }
+        @media (max-width: 600px) {
+            .game-board { grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 6px; max-width: 140px; }
+            .game-cell { width: 44px; height: 44px; font-size: 1.1rem; }
+            .game-tabs { flex-wrap: wrap; gap: 6px; }
+            .game-tab { padding: 7px 10px; font-size: 0.95rem; }
+            section, .thankyou-container { padding: 18px 2px !important; }
+            h1, h2 { font-size: 1.3rem !important; }
+        }
+        .game-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .game-tab {
+            background: #23234a;
+            color: #ffd700;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .game-tab.active, .game-tab:hover {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+        .game-area { min-height: 220px; }
+        .game-stats { margin-top: 18px; color: #cbd5e1; font-size: 1rem; }
+        .memory-board {
+            margin: 0 auto 18px auto;
+            justify-content: center;
+        }
+        .memory-card {
+            width: 60px;
+            height: 60px;
+            background: #23234a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            margin: 0;
+        }
+        .memory-card:hover {
+            background: #ffd700;
+            color: #222;
+            transform: scale(1.08);
+        }
+        @media (max-width: 900px) {
+            .memory-card { width: 44px; height: 44px; font-size: 1.1rem; }
+            .memory-board { gap: 6px; }
+        }
+        .wordle-board { margin: 0 auto 18px auto; }
+        .wordle-row { display: flex; gap: 6px; margin-bottom: 4px; }
+        .wordle-cell { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; border-radius: 6px; color: #fff; background: #23234a; transition: background 0.2s; }
+        @media (max-width: 900px) { .wordle-cell { width: 28px; height: 28px; font-size: 1rem; } }
+        .reaction-box { cursor: pointer; user-select: none; transition: background 0.2s; }
+        .simon-board { display: flex; gap: 16px; margin: 18px auto; justify-content: center; }
+        .simon-btn { width: 54px; height: 54px; border-radius: 50%; border: none; outline: none; transition: opacity 0.2s; }
+        @media (max-width: 900px) { .simon-btn { width: 36px; height: 36px; } }
+        .quiz-question { font-size: 1.2rem; margin: 12px 0; color: #fbbf24; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/images/profile.jpg" alt="Profile" class="profile-img animate__animated animate__fadeInDown"/>
+        <h1 class="animate__animated animate__fadeInUp">Hemanth Kumar Kodhati</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">Senior Java Developer | Capital One | Plano, TX</p>
+        <nav class="animate__animated animate__fadeInUp animate__delay-2s">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#games">Games</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section id="about" data-aos="fade-up">
+        <h2>About Me</h2>
+        <div class="about">
+            <img src="/images/profile.jpg" alt="Hemanth Kumar Kodhati"/>
+            <div class="about-text">
+                <p>Senior Java Developer with 7+ years of experience in enterprise software, cloud migration, and microservices. Skilled in Java, Spring Boot, AWS, Kafka, and DevOps. Passionate about building robust, scalable solutions and leading high-impact projects.</p>
+                <ul>
+                    <li>M.S. Computer Science, Indiana State University (GPA: 3.94/4.0)</li>
+                    <li>B.E. Electrical & Electronics, VTU</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="skills" data-aos="fade-up">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill-bar"><div class="skill-label">Java, Spring Boot, J2EE</div><div class="bar-bg"><div class="bar-fill" data-width="98%"></div></div></div>
+            <div class="skill-bar"><div class="skill-label">AWS, GCP, Docker, Kubernetes</div><div class="bar-bg"><div class="bar-fill" data-width="95%"></div></div></div>
+            <div class="skill-bar"><div class="skill-label">Kafka, Microservices, REST APIs</div><div class="bar-bg"><div class="bar-fill" data-width="93%"></div></div></div>
+            <div class="skill-bar"><div class="skill-label">SQL, MySQL, Postgres, Oracle</div><div class="bar-bg"><div class="bar-fill" data-width="90%"></div></div></div>
+            <div class="skill-bar"><div class="skill-label">DevOps: Jenkins, Git, CI/CD</div><div class="bar-bg"><div class="bar-fill" data-width="90%"></div></div></div>
+        </div>
+    </section>
+    <section id="projects" data-aos="fade-up">
+        <h2>Professional Projects</h2>
+        <div class="projects">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="/images/capital-one-logo.png" alt="Capital One"/>
+                <div class="project-title">Capital One - Cloud Migration</div>
+                <div class="project-desc">Migrated business-critical services to AWS Gen3, re-engineered microservices with Java 21 & Spring Boot 3.x, and implemented CI/CD, monitoring, and canary deployments.</div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="/images/citizens-bank-logo.png" alt="Citizens Bank"/>
+                <div class="project-title">Citizens Bank - Kafka Streams</div>
+                <div class="project-desc">Designed and built real-time data pipelines with Kafka Streams, led onshore/offshore teams, and migrated to Java 17 with CQRS pattern.</div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="/images/amex-logo.png" alt="American Express"/>
+                <div class="project-title">American Express - REST APIs</div>
+                <div class="project-desc">Developed RESTful APIs, migrated monoliths to microservices, and implemented CI/CD pipelines with Jenkins and Spring Boot.</div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+                <img src="/images/niduss-hr-logo.svg" alt="Niduss HR Services"/>
+                <div class="project-title">Niduss HR Services - Payroll & Onboarding</div>
+                <div class="project-desc">Developed tax calculation modules, automated payroll, and reduced onboarding time by 10% using Spring, Hibernate, and MySQL.</div>
+            </div>
+        </div>
+    </section>
+    <section id="academic-projects" data-aos="fade-up">
+        <h2>Academic Projects</h2>
+        <div class="projects">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="/images/indiana-state-logo.png" alt="Indiana State University"/>
+                <div class="project-title">Sentiment Analysis & Data Collection</div>
+                <div class="project-desc">NLP and ML-based sentiment analysis using Python, NLTK, Flask, and GCP. Used Edit Distance, N-grams, and published research in NPES-18.</div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="/images/be-project-logo.svg" alt="VTU"/>
+                <div class="project-title">Source Characteristics for Pollution Studies</div>
+                <div class="project-desc">Simulated insulator pollution studies using PSPICE, validated by CPRI, and published in a national conference.</div>
+            </div>
+        </div>
+    </section>
+    <section id="experience" data-aos="fade-up">
+        <h2>Experience</h2>
+        <div class="experience">
+            <div class="exp-item" data-aos="fade-right" data-aos-delay="100">
+                <img src="/images/capital-one-logo.png" alt="Capital One" class="exp-logo"/>
+                <div class="exp-details">
+                    <div class="exp-title">Java Developer, Ventechsoft INC (Capital One)</div>
+                    <div class="exp-period">Plano, TX | Jun 2024 - Present</div>
+                    <div class="exp-desc">Cloud migration, microservices, AWS, CI/CD, and platform automation.</div>
+                </div>
+            </div>
+            <div class="exp-item" data-aos="fade-right" data-aos-delay="200">
+                <img src="/images/citizens-bank-logo.png" alt="Citizens Bank" class="exp-logo"/>
+                <div class="exp-details">
+                    <div class="exp-title">Kafka Java Developer, Infosys (Citizens Bank)</div>
+                    <div class="exp-period">NJ | Jun 2022 - May 2024</div>
+                    <div class="exp-desc">Kafka pipelines, microservices, Java 17 migration, and team leadership.</div>
+                </div>
+            </div>
+            <div class="exp-item" data-aos="fade-right" data-aos-delay="300">
+                <img src="/images/amex-logo.png" alt="American Express" class="exp-logo"/>
+                <div class="exp-details">
+                    <div class="exp-title">Java Developer, Infosys (American Express)</div>
+                    <div class="exp-period">Phoenix, AZ | Aug 2021 - Jun 2022</div>
+                    <div class="exp-desc">REST APIs, microservices, data analysis, and CI/CD.</div>
+                </div>
+            </div>
+            <div class="exp-item" data-aos="fade-right" data-aos-delay="400">
+                <img src="/images/niduss-hr-logo.svg" alt="Niduss HR Services" class="exp-logo"/>
+                <div class="exp-details">
+                    <div class="exp-title">Junior Java Developer, Niduss HR Services</div>
+                    <div class="exp-period">India | Jun 2017 - Jul 2019</div>
+                    <div class="exp-desc">Payroll automation, onboarding, Hibernate, and MySQL.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="games" class="game-section" data-aos="fade-up">
+        <h2>Games</h2>
+        <div class="game-tabs">
+            <button class="game-tab active" data-game="ttt">Tic-Tac-Toe</button>
+            <button class="game-tab" data-game="memory">Memory</button>
+            <button class="game-tab" data-game="wordle">Wordle</button>
+            <button class="game-tab" data-game="reaction">Reaction</button>
+            <button class="game-tab" data-game="simon">Simon Says</button>
+            <button class="game-tab" data-game="quiz">Quiz</button>
+        </div>
+        <div class="game-areas">
+            <div class="game-area" id="game-ttt">
+                <div class="game-title">Tic-Tac-Toe (AI Learns from You!)</div>
+                <div class="game-status" id="tttStatus">Your turn: X</div>
+                <div class="game-board" id="tttBoard"></div>
+                <button onclick="resetTTT()" class="btn btn-primary">Restart Game</button>
+                <div class="game-stats" id="tttStats"></div>
+            </div>
+            <div class="game-area" id="game-memory" style="display:none">
+                <div class="game-title">Memory Card Flip</div>
+                <div class="memory-board"></div>
+                <button class="btn btn-primary" id="memoryRestart">Restart</button>
+                <div class="game-stats" id="memoryStats"></div>
+            </div>
+            <div class="game-area" id="game-wordle" style="display:none">
+                <div class="game-title">Wordle</div>
+                <div class="wordle-board"></div>
+                <input class="form-control" id="wordleInput" maxlength="5" placeholder="Enter 5-letter word" autocomplete="off" style="margin:12px 0;width:160px;display:inline-block;"/>
+                <button class="btn btn-primary" id="wordleGuess">Guess</button>
+                <button class="btn btn-primary" id="wordleRestart">Restart</button>
+                <div class="game-stats" id="wordleStats"></div>
+            </div>
+            <div class="game-area" id="game-reaction" style="display:none">
+                <div class="game-title">Reaction Time</div>
+                <div class="reaction-box">Wait for green...</div>
+                <button class="btn btn-primary" id="reactionRestart">Restart</button>
+                <div class="game-stats" id="reactionStats"></div>
+            </div>
+            <div class="game-area" id="game-simon" style="display:none">
+                <div class="game-title">Simon Says</div>
+                <div class="simon-board"></div>
+                <button class="btn btn-primary" id="simonRestart">Restart</button>
+                <div class="game-stats" id="simonStats"></div>
+            </div>
+            <div class="game-area" id="game-quiz" style="display:none">
+                <div class="game-title">Quiz</div>
+                <div class="quiz-question"></div>
+                <input class="form-control" id="quizInput" placeholder="Your answer" autocomplete="off" style="margin:12px 0;width:180px;display:inline-block;"/>
+                <button class="btn btn-primary" id="quizGuess">Submit</button>
+                <button class="btn btn-primary" id="quizRestart">Restart</button>
+                <div class="game-stats" id="quizStats"></div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" data-aos="fade-up">
+        <h2>Contact</h2>
+        <form class="contact-form" action="https://formspree.io/f/mzzgqqdj" method="POST" autocomplete="off">
+            <input type="text" name="name" placeholder="Your Name" required/>
+            <input type="email" name="email" placeholder="Your Email" required/>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div style="margin-top: 32px; text-align: center; color: #cbd5e1;">
+            <div>Email: <a href="mailto:hemanth0070kodhati@gmail.com" style="color: #ffd700;">hemanth0070kodhati@gmail.com</a></div>
+            <div>Phone: <a href="tel:+18122232110" style="color: #ffd700;">+1 (812) 223-2110</a></div>
+            <div>LinkedIn: <a href="https://www.linkedin.com/in/hemanth-kumar-k-java7" target="_blank" style="color: #ffd700;">hemanth-kumar-k-java7</a></div>
+            <div>GitHub: <a href="https://github.com/hkodhati" target="_blank" style="color: #ffd700;">hkodhati</a></div>
+        </div>
+    </section>
+    <!-- Add a modal for confirmation popup -->
+    <div id="confirmationModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:9999;align-items:center;justify-content:center;">
+        <div style="background:#20203a;padding:2rem 3rem;border-radius:1rem;box-shadow:0 8px 32px rgba(0,0,0,0.25);color:#ffd700;font-size:1.3rem;text-align:center;">
+            Thank you for reaching out!<br/>Your message has been sent successfully.
+        </div>
+    </div>
+    <!-- AOS and Animate.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        // Animate skill bars
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.bar-fill').forEach(function(bar) {
+                setTimeout(() => {
+                    bar.style.width = bar.getAttribute('data-width');
+                }, 400);
+            });
+        });
+        // Contact form (Formspree version)
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Show confirmation popup
+            const modal = document.getElementById('confirmationModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                window.location.href = 'thank-you.html';
+            }, 2500);
+            contactForm.submit();
+        });
+        // Game Tabs Navigation
+        const gameTabs = document.querySelectorAll('.game-tab');
+        const gameAreas = document.querySelectorAll('.game-area');
+        gameTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                gameTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                gameAreas.forEach(area => area.style.display = 'none');
+                document.getElementById('game-' + tab.dataset.game).style.display = '';
+            });
+        });
+        // --- Tic-Tac-Toe with Learning AI ---
+        const tttBoardDiv = document.getElementById('tttBoard');
+        const tttStatus = document.getElementById('tttStatus');
+        const tttStats = document.getElementById('tttStats');
+        let tttBoard = Array(9).fill(null);
+        let tttXIsNext = true;
+        let tttGameActive = true;
+        let tttAIData = JSON.parse(localStorage.getItem('tttAIData') || '{}');
+        let tttUserPatterns = tttAIData.userPatterns || {};
+        let tttAIWins = tttAIData.aiWins || 0;
+        let tttUserWins = tttAIData.userWins || 0;
+        let tttDraws = tttAIData.draws || 0;
+        function renderTTTBoard() {
+            tttBoardDiv.innerHTML = '';
+            tttBoard.forEach((cell, idx) => {
+                const div = document.createElement('div');
+                div.className = 'game-cell';
+                div.textContent = cell ? cell : '';
+                div.onclick = () => handleTTTMove(idx);
+                tttBoardDiv.appendChild(div);
+            });
+            tttStats.innerHTML = `Your Wins: ${tttUserWins} | AI Wins: ${tttAIWins} | Draws: ${tttDraws}`;
+        }
+        function handleTTTMove(idx) {
+            if (!tttGameActive || tttBoard[idx]) return;
+            tttBoard[idx] = tttXIsNext ? 'X' : 'O';
+            tttXIsNext = !tttXIsNext;
+            checkTTTWinner();
+            renderTTTBoard();
+            if (tttGameActive && !tttXIsNext) setTimeout(aiTTTMove, 500);
+            tttStatus.textContent = tttGameActive ? `Your turn: ${tttXIsNext ? 'X' : 'O'}` : tttStatus.textContent;
+        }
+        function aiTTTMove() {
+            // AI: block user win, win if possible, else learn from user patterns
+            let move = findBestTTTMove();
+            if (move === null) move = tttBoard.findIndex(cell => !cell);
+            if (move !== null && tttGameActive) {
+                tttBoard[move] = 'O';
+                tttXIsNext = !tttXIsNext;
+                checkTTTWinner();
+                renderTTTBoard();
+                tttStatus.textContent = tttGameActive ? `Your turn: X` : tttStatus.textContent;
+            }
+        }
+        function findBestTTTMove() {
+            // Win if possible
+            for (let i = 0; i < 9; i++) {
+                if (!tttBoard[i]) {
+                    tttBoard[i] = 'O';
+                    if (checkTTTWin('O')) { tttBoard[i] = null; return i; }
+                    tttBoard[i] = null;
+                }
+            }
+            // Block user win
+            for (let i = 0; i < 9; i++) {
+                if (!tttBoard[i]) {
+                    tttBoard[i] = 'X';
+                    if (checkTTTWin('X')) { tttBoard[i] = null; return i; }
+                    tttBoard[i] = null;
+                }
+            }
+            // Learn from user: block their favorite opening
+            const key = tttBoard.map(c => c || '-').join('');
+            if (tttUserPatterns[key]) {
+                for (const i of tttUserPatterns[key]) {
+                    if (!tttBoard[i]) return i;
+                }
+            }
+            return null;
+        }
+        function checkTTTWin(player) {
+            const lines = [
+                [0,1,2],[3,4,5],[6,7,8],
+                [0,3,6],[1,4,7],[2,5,8],
+                [0,4,8],[2,4,6]
+            ];
+            return lines.some(([a,b,c]) => tttBoard[a] === player && tttBoard[b] === player && tttBoard[c] === player);
+        }
+        function checkTTTWinner() {
+            if (checkTTTWin('X')) {
+                tttStatus.textContent = 'You win! 🎉';
+                tttUserWins++;
+                learnTTTUserPattern();
+                tttGameActive = false;
+                saveTTTAIData();
+                return;
+            }
+            if (checkTTTWin('O')) {
+                tttStatus.textContent = 'AI wins! 🤖';
+                tttAIWins++;
+                tttGameActive = false;
+                saveTTTAIData();
+                return;
+            }
+            if (tttBoard.every(cell => cell)) {
+                tttStatus.textContent = "It's a draw!";
+                tttDraws++;
+                tttGameActive = false;
+                saveTTTAIData();
+            }
+        }
+        function learnTTTUserPattern() {
+            // Store the user's winning move pattern
+            const key = tttBoard.map(c => c || '-').join('');
+            if (!tttUserPatterns[key]) tttUserPatterns[key] = [];
+            for (let i = 0; i < 9; i++) if (tttBoard[i] === 'X') tttUserPatterns[key].push(i);
+        }
+        function saveTTTAIData() {
+            localStorage.setItem('tttAIData', JSON.stringify({userPatterns: tttUserPatterns, aiWins: tttAIWins, userWins: tttUserWins, draws: tttDraws}));
+        }
+        function resetTTT() {
+            tttBoard = Array(9).fill(null);
+            tttXIsNext = true;
+            tttGameActive = true;
+            tttStatus.textContent = 'Your turn: X';
+            renderTTTBoard();
+        }
+        renderTTTBoard();
+        // --- Memory Card Flip Game (Adaptive) ---
+        const memoryArea = document.getElementById('game-memory');
+        const memoryStats = document.getElementById('memoryStats');
+        let memoryLevel = parseInt(localStorage.getItem('memoryLevel') || '2'); // pairs
+        let memoryWins = parseInt(localStorage.getItem('memoryWins') || '0');
+        let memoryTries = parseInt(localStorage.getItem('memoryTries') || '0');
+        let memoryBest = parseInt(localStorage.getItem('memoryBest') || '0');
+        let memoryCards = [];
+        let memoryFlipped = [];
+        let memoryMatched = [];
+        let memoryTriesThisGame = 0;
+        function setupMemoryGame() {
+            memoryArea.innerHTML = `<div class='game-title'>Memory Card Flip</div><div class='memory-board'></div><button class='btn btn-primary' id='memoryRestart'>Restart</button><div class='game-stats' id='memoryStats'></div>`;
+            const board = memoryArea.querySelector('.memory-board');
+            const pairs = memoryLevel;
+            let values = [];
+            for (let i = 1; i <= pairs; i++) { values.push(i, i); }
+            values = shuffle(values);
+            memoryCards = values;
+            memoryFlipped = [];
+            memoryMatched = [];
+            memoryTriesThisGame = 0;
+            board.style.display = 'grid';
+            board.style.gridTemplateColumns = `repeat(${Math.min(4, pairs)}, 60px)`;
+            board.style.gap = '12px';
+            board.innerHTML = '';
+            for (let i = 0; i < values.length; i++) {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.dataset.idx = i;
+                card.onclick = () => flipMemoryCard(i);
+                board.appendChild(card);
+            }
+            updateMemoryStats();
+            memoryArea.querySelector('#memoryRestart').onclick = setupMemoryGame;
+        }
+        function flipMemoryCard(idx) {
+            if (memoryMatched.includes(idx) || memoryFlipped.includes(idx) || memoryFlipped.length === 2) return;
+            memoryFlipped.push(idx);
+            renderMemoryBoard();
+            if (memoryFlipped.length === 2) {
+                memoryTriesThisGame++;
+                setTimeout(() => {
+                    const [a, b] = memoryFlipped;
+                    if (memoryCards[a] === memoryCards[b]) {
+                        memoryMatched.push(a, b);
+                        if (memoryMatched.length === memoryCards.length) {
+                            memoryWins++;
+                            if (!memoryBest || memoryTriesThisGame < memoryBest) memoryBest = memoryTriesThisGame;
+                            if (memoryTriesThisGame <= memoryLevel + 1) memoryLevel = Math.min(memoryLevel + 1, 8); // increase difficulty
+                            localStorage.setItem('memoryLevel', memoryLevel);
+                            localStorage.setItem('memoryBest', memoryBest);
+                            setTimeout(() => { alert('You win! Level up!'); setupMemoryGame(); }, 500);
+                        }
+                    } else {
+                        if (memoryTriesThisGame > memoryLevel * 2) {
+                            // Give a hint: briefly show all unmatched cards
+                            showMemoryHint();
+                        }
+                    }
+                    memoryFlipped = [];
+                    updateMemoryStats();
+                    renderMemoryBoard();
+                }, 800);
+            }
+        }
+        function renderMemoryBoard() {
+            const board = memoryArea.querySelector('.memory-board');
+            for (let i = 0; i < memoryCards.length; i++) {
+                const card = board.children[i];
+                card.className = 'memory-card';
+                if (memoryMatched.includes(i)) {
+                    card.textContent = memoryCards[i];
+                    card.style.background = '#10b981';
+                    card.style.color = '#fff';
+                } else if (memoryFlipped.includes(i)) {
+                    card.textContent = memoryCards[i];
+                    card.style.background = '#ffd700';
+                    card.style.color = '#222';
+                } else {
+                    card.textContent = '';
+                    card.style.background = '#23234a';
+                    card.style.color = '#fff';
+                }
+            }
+        }
+        function updateMemoryStats() {
+            memoryStats.textContent = `Level: ${memoryLevel} pairs | Wins: ${memoryWins} | Best: ${memoryBest || '-'} tries`;
+            localStorage.setItem('memoryWins', memoryWins);
+            localStorage.setItem('memoryTries', memoryTries);
+        }
+        function showMemoryHint() {
+            const board = memoryArea.querySelector('.memory-board');
+            for (let i = 0; i < memoryCards.length; i++) {
+                if (!memoryMatched.includes(i)) {
+                    board.children[i].textContent = memoryCards[i];
+                    board.children[i].style.background = '#6366f1';
+                }
+            }
+            setTimeout(renderMemoryBoard, 1000);
+        }
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        // Initialize Memory game when tab is clicked
+        const memoryTab = document.querySelector('.game-tab[data-game="memory"]');
+        memoryTab.addEventListener('click', setupMemoryGame);
+        // --- Wordle Game (Adaptive) ---
+        const wordleArea = document.getElementById('game-wordle');
+        const wordleStats = document.getElementById('wordleStats');
+        let wordleWords = ["apple","grape","peach","lemon","mango","berry","melon","plums","olive","guava","pride","crane","flame","sword","tiger","zebra","eagle","shark","whale","piano","table","chair","plant","cloud","brick","sugar","spice","angel","demon","giant","robot"];
+        let wordleLevel = parseInt(localStorage.getItem('wordleLevel') || '0');
+        let wordleWins = parseInt(localStorage.getItem('wordleWins') || '0');
+        let wordleBest = parseInt(localStorage.getItem('wordleBest') || '0');
+        let wordleCurrent = '';
+        let wordleGuesses = [];
+        let wordleMaxGuesses = 6;
+        function setupWordleGame() {
+            wordleArea.innerHTML = `<div class='game-title'>Wordle</div><div class='wordle-board'></div><input class='form-control' id='wordleInput' maxlength='5' placeholder='Enter 5-letter word' autocomplete='off' style='margin:12px 0;width:160px;display:inline-block;'/><button class='btn btn-primary' id='wordleGuess'>Guess</button><button class='btn btn-primary' id='wordleRestart'>Restart</button><div class='game-stats' id='wordleStats'></div>`;
+            wordleGuesses = [];
+            // Adaptive: easier words if lost last time, harder if won
+            let wordList = wordleWords.slice();
+            if (wordleLevel > 10) wordList = wordleWords.slice(10); // harder
+            else if (wordleLevel < 3) wordList = wordleWords.slice(0, 10); // easier
+            wordleCurrent = wordList[Math.floor(Math.random() * wordList.length)].toLowerCase();
+            renderWordleBoard();
+            updateWordleStats();
+            wordleArea.querySelector('#wordleGuess').onclick = wordleGuess;
+            wordleArea.querySelector('#wordleRestart').onclick = setupWordleGame;
+            wordleArea.querySelector('#wordleInput').addEventListener('keyup', function(e){ if(e.key==='Enter') wordleGuess(); });
+        }
+        function wordleGuess() {
+            const input = wordleArea.querySelector('#wordleInput');
+            let guess = input.value.trim().toLowerCase();
+            if (guess.length !== 5) { input.classList.add('is-invalid'); return; }
+            input.classList.remove('is-invalid');
+            wordleGuesses.push(guess);
+            renderWordleBoard();
+            if (guess === wordleCurrent) {
+                wordleWins++;
+                if (!wordleBest || wordleGuesses.length < wordleBest) wordleBest = wordleGuesses.length;
+                wordleLevel = Math.min(wordleLevel + 1, wordleWords.length-1);
+                localStorage.setItem('wordleLevel', wordleLevel);
+                localStorage.setItem('wordleBest', wordleBest);
+                setTimeout(() => { alert('You win! Level up!'); setupWordleGame(); }, 500);
+                return;
+            }
+            if (wordleGuesses.length >= wordleMaxGuesses) {
+                wordleLevel = Math.max(wordleLevel - 1, 0);
+                localStorage.setItem('wordleLevel', wordleLevel);
+                setTimeout(() => { alert('Out of guesses! The word was: ' + wordleCurrent); setupWordleGame(); }, 500);
+                return;
+            }
+            input.value = '';
+            updateWordleStats();
+        }
+        function renderWordleBoard() {
+            const board = wordleArea.querySelector('.wordle-board');
+            board.innerHTML = '';
+            for (let g of wordleGuesses) {
+                const row = document.createElement('div');
+                row.className = 'wordle-row';
+                for (let i = 0; i < 5; i++) {
+                    const cell = document.createElement('span');
+                    cell.className = 'wordle-cell';
+                    cell.textContent = g[i] || '';
+                    if (g[i] === wordleCurrent[i]) cell.style.background = '#10b981';
+                    else if (wordleCurrent.includes(g[i])) cell.style.background = '#ffd700';
+                    else cell.style.background = '#23234a';
+                    row.appendChild(cell);
+                }
+                board.appendChild(row);
+            }
+        }
+        function updateWordleStats() {
+            wordleStats.textContent = `Level: ${wordleLevel+1} | Wins: ${wordleWins} | Best: ${wordleBest || '-'} guesses`;
+            localStorage.setItem('wordleWins', wordleWins);
+        }
+        // Initialize Wordle game when tab is clicked
+        const wordleTab = document.querySelector('.game-tab[data-game="wordle"]');
+        wordleTab.addEventListener('click', setupWordleGame);
+        // --- Reaction Time Game (Adaptive) ---
+        const reactionArea = document.getElementById('game-reaction');
+        const reactionStats = document.getElementById('reactionStats');
+        let reactionTimes = JSON.parse(localStorage.getItem('reactionTimes') || '[]');
+        let reactionBest = parseInt(localStorage.getItem('reactionBest') || '0');
+        let reactionTimeout, reactionStart;
+        function setupReactionGame() {
+            reactionArea.innerHTML = `<div class='game-title'>Reaction Time</div><div class='reaction-box'>Wait for green...</div><button class='btn btn-primary' id='reactionRestart'>Restart</button><div class='game-stats' id='reactionStats'></div>`;
+            const box = reactionArea.querySelector('.reaction-box');
+            box.style.background = '#23234a';
+            box.style.height = '80px';
+            box.style.display = 'flex';
+            box.style.alignItems = 'center';
+            box.style.justifyContent = 'center';
+            box.style.fontSize = '1.3rem';
+            box.style.borderRadius = '10px';
+            box.style.margin = '18px 0';
+            box.onclick = null;
+            setTimeout(() => {
+                box.textContent = 'Wait...';
+                box.style.background = '#f87171';
+                let wait = 1000 + Math.random() * 2000 + Math.random() * (reactionTimes.length > 5 ? 2000 : 0); // adaptive
+                reactionTimeout = setTimeout(() => {
+                    box.textContent = 'CLICK!';
+                    box.style.background = '#10b981';
+                    reactionStart = Date.now();
+                    box.onclick = () => {
+                        let time = Date.now() - reactionStart;
+                        reactionTimes.push(time);
+                        if (!reactionBest || time < reactionBest) reactionBest = time;
+                        localStorage.setItem('reactionTimes', JSON.stringify(reactionTimes.slice(-20)));
+                        localStorage.setItem('reactionBest', reactionBest);
+                        updateReactionStats();
+                        box.textContent = `Your time: ${time} ms`;
+                        box.style.background = '#6366f1';
+                        box.onclick = null;
+                    };
+                }, wait);
+            }, 800);
+            reactionArea.querySelector('#reactionRestart').onclick = setupReactionGame;
+            updateReactionStats();
+        }
+        function updateReactionStats() {
+            let avg = reactionTimes.length ? Math.round(reactionTimes.reduce((a,b)=>a+b,0)/reactionTimes.length) : '-';
+            reactionStats.textContent = `Best: ${reactionBest || '-'} ms | Avg: ${avg} ms`;
+        }
+        // Initialize Reaction game when tab is clicked
+        const reactionTab = document.querySelector('.game-tab[data-game="reaction"]');
+        reactionTab.addEventListener('click', setupReactionGame);
+        // --- Simon Says Game (Adaptive) ---
+        const simonArea = document.getElementById('game-simon');
+        const simonStats = document.getElementById('simonStats');
+        let simonLevel = parseInt(localStorage.getItem('simonLevel') || '3');
+        let simonWins = parseInt(localStorage.getItem('simonWins') || '0');
+        let simonBest = parseInt(localStorage.getItem('simonBest') || '0');
+        let simonSequence = [];
+        let simonUser = [];
+        let simonColors = ['#10b981','#f87171','#ffd700','#6366f1'];
+        function setupSimonGame() {
+            simonArea.innerHTML = `<div class='game-title'>Simon Says</div><div class='simon-board'></div><button class='btn btn-primary' id='simonRestart'>Restart</button><div class='game-stats' id='simonStats'></div>`;
+            simonSequence = [];
+            simonUser = [];
+            for (let i = 0; i < simonLevel; i++) simonSequence.push(Math.floor(Math.random()*4));
+            renderSimonBoard();
+            showSimonSequence();
+            updateSimonStats();
+            simonArea.querySelector('#simonRestart').onclick = setupSimonGame;
+        }
+        function renderSimonBoard() {
+            const board = simonArea.querySelector('.simon-board');
+            board.innerHTML = '';
+            for (let i = 0; i < 4; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'simon-btn';
+                btn.style.background = simonColors[i];
+                btn.onclick = () => simonInput(i);
+                board.appendChild(btn);
+            }
+        }
+        function showSimonSequence() {
+            const board = simonArea.querySelector('.simon-board');
+            let i = 0;
+            function flash() {
+                if (i >= simonSequence.length) return;
+                const idx = simonSequence[i];
+                const btn = board.children[idx];
+                btn.style.opacity = '0.4';
+                setTimeout(() => {
+                    btn.style.opacity = '1';
+                    i++;
+                    setTimeout(flash, 400);
+                }, 400);
+            }
+            setTimeout(flash, 600);
+        }
+        function simonInput(idx) {
+            simonUser.push(idx);
+            const cur = simonUser.length-1;
+            if (simonUser[cur] !== simonSequence[cur]) {
+                simonLevel = Math.max(simonLevel-1, 3);
+                localStorage.setItem('simonLevel', simonLevel);
+                setTimeout(() => { alert('Wrong! Try again.'); setupSimonGame(); }, 500);
+                return;
+            }
+            if (simonUser.length === simonSequence.length) {
+                simonWins++;
+                if (!simonBest || simonLevel > simonBest) simonBest = simonLevel;
+                simonLevel = Math.min(simonLevel+1, 12);
+                localStorage.setItem('simonLevel', simonLevel);
+                localStorage.setItem('simonBest', simonBest);
+                setTimeout(() => { alert('Correct! Level up!'); setupSimonGame(); }, 500);
+                return;
+            }
+        }
+        function updateSimonStats() {
+            simonStats.textContent = `Level: ${simonLevel} | Wins: ${simonWins} | Best: ${simonBest || '-'} level`;
+            localStorage.setItem('simonWins', simonWins);
+        }
+        // Initialize Simon game when tab is clicked
+        const simonTab = document.querySelector('.game-tab[data-game="simon"]');
+        simonTab.addEventListener('click', setupSimonGame);
+        // --- Quiz Game (Adaptive) ---
+        const quizArea = document.getElementById('game-quiz');
+        const quizStats = document.getElementById('quizStats');
+        let quizQuestions = [
+            {q:'What is the capital of France?',a:'Paris',d:1},
+            {q:'What is 5 x 6?',a:'30',d:1},
+            {q:'Who wrote Hamlet?',a:'Shakespeare',d:2},
+            {q:'What is the square root of 81?',a:'9',d:2},
+            {q:'What is the chemical symbol for water?',a:'H2O',d:1},
+            {q:'Who painted the Mona Lisa?',a:'Da Vinci',d:2},
+            {q:'What is the largest planet?',a:'Jupiter',d:2},
+            {q:'What year did WW2 end?',a:'1945',d:3},
+            {q:'What is the derivative of x^2?',a:'2x',d:3},
+            {q:'Who developed relativity?',a:'Einstein',d:2},
+            {q:'What is the capital of Australia?',a:'Canberra',d:2},
+            {q:'What is the value of Pi (2 decimals)?',a:'3.14',d:2},
+            {q:'What is the hardest natural substance?',a:'Diamond',d:2},
+            {q:'What is the speed of light (km/s)?',a:'299792',d:3},
+            {q:'Who is the author of 1984?',a:'Orwell',d:2},
+            {q:'What is the integral of 1/x?',a:'ln|x|',d:3},
+            {q:'What is the boiling point of water (C)?',a:'100',d:1},
+            {q:'What is the capital of Canada?',a:'Ottawa',d:2},
+            {q:'What is the largest ocean?',a:'Pacific',d:2},
+            {q:'What is the atomic number of carbon?',a:'6',d:2}
+        ];
+        let quizLevel = parseInt(localStorage.getItem('quizLevel') || '1');
+        let quizWins = parseInt(localStorage.getItem('quizWins') || '0');
+        let quizBest = parseInt(localStorage.getItem('quizBest') || '0');
+        let quizCurrent = null;
+        function setupQuizGame() {
+            quizArea.innerHTML = `<div class='game-title'>Quiz</div><div class='quiz-question'></div><input class='form-control' id='quizInput' placeholder='Your answer' autocomplete='off' style='margin:12px 0;width:180px;display:inline-block;'/><button class='btn btn-primary' id='quizGuess'>Submit</button><button class='btn btn-primary' id='quizRestart'>Restart</button><div class='game-stats' id='quizStats'></div>`;
+            // Adaptive: filter questions by difficulty
+            let pool = quizQuestions.filter(q => q.d <= quizLevel);
+            if (pool.length === 0) pool = quizQuestions;
+            quizCurrent = pool[Math.floor(Math.random() * pool.length)];
+            quizArea.querySelector('.quiz-question').textContent = quizCurrent.q;
+            quizArea.querySelector('#quizGuess').onclick = quizGuess;
+            quizArea.querySelector('#quizRestart').onclick = setupQuizGame;
+            quizArea.querySelector('#quizInput').addEventListener('keyup', function(e){ if(e.key==='Enter') quizGuess(); });
+            updateQuizStats();
+        }
+        function quizGuess() {
+            const input = quizArea.querySelector('#quizInput');
+            let ans = input.value.trim().toLowerCase();
+            if (!ans) { input.classList.add('is-invalid'); return; }
+            input.classList.remove('is-invalid');
+            if (ans === quizCurrent.a.toLowerCase()) {
+                quizWins++;
+                if (!quizBest || quizLevel > quizBest) quizBest = quizLevel;
+                quizLevel = Math.min(quizLevel+1, 3);
+                localStorage.setItem('quizLevel', quizLevel);
+                localStorage.setItem('quizBest', quizBest);
+                setTimeout(() => { alert('Correct! Level up!'); setupQuizGame(); }, 500);
+                return;
+            } else {
+                quizLevel = Math.max(quizLevel-1, 1);
+                localStorage.setItem('quizLevel', quizLevel);
+                setTimeout(() => { alert('Wrong! The answer was: ' + quizCurrent.a); setupQuizGame(); }, 500);
+                return;
+            }
+            updateQuizStats();
+        }
+        function updateQuizStats() {
+            quizStats.textContent = `Level: ${quizLevel} | Wins: ${quizWins} | Best: ${quizBest || '-'} level`;
+            localStorage.setItem('quizWins', quizWins);
+        }
+        // Initialize Quiz game when tab is clicked
+        const quizTab = document.querySelector('.game-tab[data-game="quiz"]');
+        quizTab.addEventListener('click', setupQuizGame);
+    </script>
+</body>
+</html> 

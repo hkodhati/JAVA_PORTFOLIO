@@ -14,7 +14,7 @@ public class EmailService {
     
     public void sendContactNotification(Contact contact) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("your-email@example.com"); // Replace with your email
+        message.setTo("hemanth0070kodhati@gmail.com"); // Updated to your email
         message.setSubject("New Contact Form Submission: " + contact.getSubject());
         message.setText(
             "Name: " + contact.getName() + "\n" +

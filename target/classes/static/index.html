@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles - Dark Theme */
+        :root {
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            
+            --bg-primary: #10101a;
+            --bg-secondary: #18182f;
+            --bg-tertiary: #23234a;
+            --bg-card: #20203a;
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --text-inverse: #0f172a;
+            
+            --border-color: #334155;
+            --border-light: #475569;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(99,102,241,0.12), 0 10px 10px -5px rgba(99,102,241,0.08);
+            
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(120deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--border-light);
+        }
+
+        /* Layout */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+
+
+        .code-window {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .window-header {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27ca3f; }
+
+        .code-content {
+            padding: 1.5rem;
+        }
+
+        .code-content pre {
+            margin: 0;
+            color: var(--text-secondary);
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 160px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        /* Page sections */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Project Card Hover Effects */
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .project-card button {
+            transition: all 0.3s ease;
+        }
+
+        .project-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+
+        .project-card button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Tech Tags Hover Effects */
+        .tech-tag {
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-color) !important;
+            color: white !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+        }
+
+        .project-image {
+            height: 220px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        .project-image img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        .project-image svg {
+            max-width: 85%;
+            max-height: 85%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            line-height: 1.3;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .project-links .btn {
+            flex: 1;
+            min-width: 140px;
+            justify-content: center;
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+        }
+
+        /* Contact Form */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* --- Animations & Modern Enhancements --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .section, .hero, .projects-grid, .contact-content, .card, .project-card {
+            will-change: opacity, transform;
+        }
+        .btn, .btn-primary, .btn-secondary {
+            transition: box-shadow 0.3s, transform 0.2s, background 0.3s, color 0.3s;
+        }
+        .btn-primary {
+            box-shadow: 0 2px 16px 0 rgba(99,102,241,0.15);
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+        .btn-secondary:active {
+            transform: scale(0.97);
+        }
+        .project-card {
+            transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s;
+        }
+        .project-card:active {
+            transform: scale(0.98);
+        }
+        /* Modern color tweaks */
+        :root {
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --bg-primary: #10101a;
+            --bg-secondary: #18182f;
+            --bg-tertiary: #23234a;
+            --bg-card: #20203a;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --text-inverse: #0f172a;
+            --border-color: #334155;
+            --border-light: #475569;
+            --shadow-xl: 0 20px 25px -5px rgba(99,102,241,0.12), 0 10px 10px -5px rgba(99,102,241,0.08);
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(120deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+        /* --- End Animations & Modern Enhancements --- */
+
+        /* Enhanced Modal Styling */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Enhanced bullet points styling */
+        .modal ul li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .modal ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Enhanced technology tags in modal */
+        .modal .tech-tag {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            color: var(--primary-color);
+            padding: 0.75rem 1.25rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem;
+            display: inline-block;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal .tech-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .modal p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal .project-tech {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .modal .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Classic White Button Styling */
+        .project-card button {
+            position: relative;
+            background: white;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #d0d0d0;
+            background: #f8f9fa;
+        }
+
+        .project-card button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#" class="brand" onclick="showPage('home')">JD</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Java Developer</h1>
+                        <p class="hero-subtitle">Full Stack Developer specializing in Java, Spring Boot, and modern web technologies</p>
+                        <div class="hero-buttons">
+                            <a href="#" onclick="showPage('projects')" class="btn btn-primary">View Projects</a>
+                            <a href="#" onclick="showPage('contact')" class="btn btn-secondary">Get In Touch</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="code-window">
+                            <div class="window-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="code-content">
+                                <pre><code>public class Portfolio {
+  public static void main(String[] args) {
+    Developer developer = new Developer();
+    developer.setName("Your Name");
+    developer.setSkills(Arrays.asList(
+      "Java", "Spring Boot", "Angular"
+    ));
+    developer.buildAmazingThings();
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">What I Do</h2>
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+                            <h3>Backend Development</h3>
+                            <p>Building robust, scalable APIs with Java, Spring Boot, and microservices architecture.</p>
+                        </div>
+                        <div class="card">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">💻</div>
+                            <h3>Frontend Development</h3>
+                            <p>Creating responsive, modern user interfaces with Angular, TypeScript, and CSS.</p>
+                        </div>
+                        <div class="card">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🔧</div>
+                            <h3>DevOps & Deployment</h3>
+                            <p>Setting up CI/CD pipelines, Docker containers, and cloud deployment strategies.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <section class="section">
+                <div class="container">
+                    <h1 class="section-title" style="text-align: center; margin-bottom: 3rem; font-size: 2.75rem; font-weight: 700; color: var(--text-primary); border-bottom: 3px solid var(--primary-color); padding-bottom: 1rem; display: inline-block; width: 100%;">Professional Profile</h1>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 350px; gap: 3rem; align-items: start;">
+                        <!-- Main Content -->
+                        <div style="background: var(--bg-card); padding: 2.5rem; border-radius: 1rem; border: 1px solid var(--border-color);">
+                            <h2 style="font-size: 1.75rem; color: var(--primary-color); margin-bottom: 1.5rem; font-weight: 600;">Hemanth Kumar Kodhati</h2>
+                            <h3 style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem; font-weight: 500;">Senior Java Developer | Capital One</h3>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">Professional Summary</h4>
+                                <p style="line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; text-align: justify;">
+                                    Experienced Senior Java Developer with over 7 years of expertise in enterprise application development, 
+                                    microservices architecture, and cloud migration initiatives. Currently serving as a Java Developer 
+                                    at Capital One, specializing in AWS cloud services, Apache Kafka, and modern DevOps practices.
+                                </p>
+                            </div>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">Core Competencies</h4>
+                                <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Java 21 & Spring Boot 3.x</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• AWS Cloud Services</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Apache Kafka & Streams</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Microservices Architecture</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Docker & Kubernetes</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• RESTful APIs & JWT</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">Key Achievements</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Led migration of critical business services to AWS Gen3 environments</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Implemented complex data pipelines using Kafka Streams</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Developed enterprise-grade microservices with Spring Boot</li>
+                                    <li style="color: var(--text-secondary); padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">• Established CI/CD pipelines with Jenkins and Git</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar -->
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- Profile Card -->
+                            <div class="card" style="text-align: center; padding: 2rem;">
+                                <div style="width: 120px; height: 120px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 3.5rem; box-shadow: var(--shadow-lg);">👨‍💻</div>
+                                <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.5rem;">Hemanth Kumar Kodhati</h3>
+                                <p style="color: var(--primary-color); font-weight: 500; margin-bottom: 1.5rem;">Senior Java Developer</p>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem;">Capital One | Plano, TX</p>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                                    <div style="text-align: center; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem;">
+                                        <span style="display: block; font-size: 1.75rem; font-weight: 700; color: var(--primary-color);">7+</span>
+                                        <span style="font-size: 0.875rem; color: var(--text-muted);">Years Experience</span>
+                                    </div>
+                                    <div style="text-align: center; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem;">
+                                        <span style="display: block; font-size: 1.75rem; font-weight: 700; color: var(--primary-color);">15+</span>
+                                        <span style="font-size: 0.875rem; color: var(--text-muted);">Enterprise Projects</span>
+                                    </div>
+                                    <div style="text-align: center; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem;">
+                                        <span style="display: block; font-size: 1.75rem; font-weight: 700; color: var(--primary-color);">3.94</span>
+                                        <span style="font-size: 0.875rem; color: var(--text-muted);">GPA (MS CS)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Education Card -->
+                            <div class="card" style="padding: 1.5rem;">
+                                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">Education</h4>
+                                <div style="margin-bottom: 1rem;">
+                                    <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">Master of Science, Computer Science</p>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Indiana State University</p>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem;">GPA: 3.94/4.0</p>
+                                </div>
+                                <div>
+                                    <p style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.25rem;">Bachelor of Engineering</p>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Electrical & Electronics Engineering</p>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Visvesvaraya Technological University</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Projects Page -->
+        <div id="projects" class="page">
+            <section class="section">
+                <div class="container">
+                    <h1 class="section-title" style="text-align: center; margin-bottom: 3rem; font-size: 2.75rem; font-weight: 700; color: var(--text-primary); border-bottom: 3px solid var(--primary-color); padding-bottom: 1rem; display: inline-block; width: 100%;">Professional Portfolio</h1>
+                    <p class="section-subtitle" style="text-align: center; font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                        A comprehensive collection of enterprise-level projects demonstrating expertise in Java development, 
+                        microservices architecture, cloud technologies, and modern software engineering practices.
+                    </p>
+                    
+                    <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2.5rem;">
+                        <div class="project-card" style="background: var(--bg-card); border-radius: 1rem; border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+                            <div class="project-image" style="height: 200px; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border-color);">
+                                <div class="project-placeholder" style="font-size: 4rem;">🏦</div>
+                            </div>
+                            <div class="project-content" style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
+                                <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">Capital One - Cloud Migration</h3>
+                                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">
+                                    Enterprise-level cloud migration initiative involving critical business services, 
+                                    microservices architecture implementation, and comprehensive AWS infrastructure management.
+                                </p>
+                                <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Java 21</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Spring Boot 3.x</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">AWS</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Docker</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Kubernetes</span>
+                                </div>
+                                <div class="project-links" style="margin-top: auto; position: relative; z-index: 10;">
+                                    <button onclick="showProjectDetails('Capital One - Cloud Migration', ['Led migration of critical business services from Gen2 to Gen3 AWS environments', 'Implemented microservices architecture with Java 21 and Spring Boot 3.x', 'Utilized AWS gears for API Gateway, Lambda, Batch, Kinesis, and RDS', 'Established comprehensive monitoring via CloudWatch and DataDog', 'Deployed using Capital One\'s PAR model with automated rollout strategies', 'Implemented Route 53 weighted routing for canary and blue/green deployments'], ['Java 21', 'Spring Boot 3.x', 'AWS', 'Docker', 'Kubernetes'], '2 years')" style="width: 100%; padding: 1rem; background: white; color: #333; border: 2px solid #e0e0e0; border-radius: 0.75rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative; z-index: 10;">
+                                        <span style="font-size: 1.2rem;">📋</span>
+                                        <span>View Project Details</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" style="background: var(--bg-card); border-radius: 1rem; border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+                            <div class="project-image" style="height: 200px; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border-color);">
+                                <div class="project-placeholder" style="font-size: 4rem;">🏛️</div>
+                            </div>
+                            <div class="project-content" style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
+                                <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">Citizens Bank - Kafka Streams</h3>
+                                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">
+                                    Real-time data processing system implementation for financial transaction processing 
+                                    with robust data pipelines and microservices architecture.
+                                </p>
+                                <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Apache Kafka</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Spring Boot</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">PostgreSQL</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Microservices</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">DataDog</span>
+                                </div>
+                                <div class="project-links" style="margin-top: auto; position: relative; z-index: 10;">
+                                    <button onclick="showProjectDetails('Citizens Bank - Kafka Streams', ['Designed and implemented real-time data processing systems using Apache Kafka Streams', 'Developed microservices for data transformation and enrichment', 'Established robust data pipelines for financial transaction processing', 'Implemented Kafka Connect for seamless data integration', 'Set up comprehensive monitoring and alerting with DataDog', 'Migrated from Java 11 to Java 17 with CQRS pattern implementation'], ['Apache Kafka', 'Spring Boot', 'PostgreSQL', 'Microservices', 'DataDog'], '2 years')" style="width: 100%; padding: 1rem; background: white; color: #333; border: 2px solid #e0e0e0; border-radius: 0.75rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative; z-index: 10;">
+                                        <span style="font-size: 1.2rem;">📋</span>
+                                        <span>View Project Details</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" style="background: var(--bg-card); border-radius: 1rem; border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+                            <div class="project-image" style="height: 200px; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border-color);">
+                                <div class="project-placeholder" style="font-size: 4rem;">💳</div>
+                            </div>
+                            <div class="project-content" style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
+                                <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">American Express - REST APIs</h3>
+                                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">
+                                    RESTful API development and microservices migration for data quality management, 
+                                    transformation, and provisioning systems.
+                                </p>
+                                <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Spring MVC</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">REST APIs</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">MySQL</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Jenkins</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">JUnit</span>
+                                </div>
+                                <div class="project-links" style="margin-top: auto; position: relative; z-index: 10;">
+                                    <button onclick="showProjectDetails('American Express - REST APIs', ['Developed RESTful APIs using Spring MVC for data quality checks and transformation', 'Migrated monolithic applications to microservices architecture', 'Implemented comprehensive testing with JUnit and TestNG', 'Established CI/CD pipelines with Jenkins and Git integration', 'Performed data analysis for source, legacy, and downstream databases', 'Used Postman for API testing and documentation'], ['Spring MVC', 'REST APIs', 'MySQL', 'Jenkins', 'JUnit'], '1 year')" style="width: 100%; padding: 1rem; background: white; color: #333; border: 2px solid #e0e0e0; border-radius: 0.75rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative; z-index: 10;">
+                                        <span style="font-size: 1.2rem;">📋</span>
+                                        <span>View Project Details</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" style="background: var(--bg-card); border-radius: 1rem; border: 1px solid var(--border-color); overflow: hidden; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+                            <div class="project-image" style="height: 200px; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border-color);">
+                                <div class="project-placeholder" style="font-size: 4rem;">🎓</div>
+                            </div>
+                            <div class="project-content" style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
+                                <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem; font-weight: 600;">Indiana State University - Academic Projects</h3>
+                                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">
+                                    Academic research and development projects focusing on educational technology 
+                                    and natural language processing applications.
+                                </p>
+                                <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">JavaScript</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Python</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">NLP</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">Flask</span>
+                                    <span class="tech-tag" style="background: var(--bg-secondary); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem; font-weight: 500;">GCP</span>
+                                </div>
+                                <div class="project-links" style="margin-top: auto; position: relative; z-index: 10;">
+                                    <button onclick="showProjectDetails('Indiana State University - Academic Projects', ['Developed JavaScript-based math problem integration system for contactless schooling', 'Achieved 16% increase in student success rate compared to previous semesters', 'Implemented sentiment analysis using Natural Language Processing and Machine Learning', 'Utilized Edit Distance Algorithm and N-grams for text processing', 'Deployed applications using Flask and Google Cloud Platform', 'Published research in Fifth National Conference (NPES-18)'], ['JavaScript', 'Python', 'NLP', 'Flask', 'GCP'], '1 year')" style="width: 100%; padding: 1rem; background: white; color: #333; border: 2px solid #e0e0e0; border-radius: 0.75rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative; z-index: 10;">
+                                        <span style="font-size: 1.2rem;">📋</span>
+                                        <span>View Project Details</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <section class="section">
+                <div class="container">
+                    <h1 class="section-title" style="text-align: center; margin-bottom: 3rem; font-size: 2.75rem; font-weight: 700; color: var(--text-primary); border-bottom: 3px solid var(--primary-color); padding-bottom: 1rem; display: inline-block; width: 100%;">Professional Contact</h1>
+                    <p class="section-subtitle" style="text-align: center; font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                        I'm always interested in new opportunities, collaborative projects, and professional networking. 
+                        Let's discuss how we can work together to create innovative solutions.
+                    </p>
+                    
+                    <div class="contact-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                        <!-- Contact Information -->
+                        <div style="background: var(--bg-card); padding: 2.5rem; border-radius: 1rem; border: 1px solid var(--border-color);">
+                            <h2 style="font-size: 1.75rem; color: var(--primary-color); margin-bottom: 1.5rem; font-weight: 600;">Contact Information</h2>
+                            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+                                Feel free to reach out through any of the following channels. I typically respond within 24 hours 
+                                during business days.
+                            </p>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem; border: 1px solid var(--border-color); transition: all 0.3s ease;">
+                                    <div style="font-size: 2.5rem; width: 70px; height: 70px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">📧</div>
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.1rem; font-weight: 600;">Email Address</h3>
+                                        <a href="mailto:hemanth0070kodhati@gmail.com" style="color: var(--primary-color); text-decoration: none; font-weight: 500; font-size: 1rem;">hemanth0070kodhati@gmail.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem; border: 1px solid var(--border-color); transition: all 0.3s ease;">
+                                    <div style="font-size: 2.5rem; width: 70px; height: 70px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">📞</div>
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.1rem; font-weight: 600;">Phone Number</h3>
+                                        <a href="tel:+18122232110" onclick="handlePhoneClick(event)" style="color: var(--primary-color); text-decoration: none; font-weight: 500; font-size: 1rem; cursor: pointer;">+1 (812) 223-2110</a>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;" onclick="window.open('https://www.linkedin.com/in/hemanth-kumar-k-java7', '_blank')" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateX(4px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateX(0)'">
+                                    <div style="font-size: 2.5rem; width: 70px; height: 70px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">💼</div>
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.1rem; font-weight: 600;">LinkedIn Profile</h3>
+                                        <p style="margin: 0; color: var(--text-secondary); font-size: 1rem;">Connect with me on LinkedIn</p>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease;" onclick="window.open('https://github.com/hkodhati', '_blank')" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.transform='translateX(4px)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateX(0)'">
+                                    <div style="font-size: 2.5rem; width: 70px; height: 70px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">🐙</div>
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary); font-size: 1.1rem; font-weight: 600;">GitHub Repository</h3>
+                                        <p style="margin: 0; color: var(--text-secondary); font-size: 1rem;">View my projects on GitHub</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div style="background: var(--bg-card); padding: 2.5rem; border-radius: 1rem; border: 1px solid var(--border-color);">
+                            <h2 style="font-size: 1.75rem; color: var(--primary-color); margin-bottom: 1.5rem; font-weight: 600;">Send a Message</h2>
+                            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+                                Have a project in mind or want to discuss opportunities? Fill out the form below and I'll get back to you promptly.
+                            </p>
+                            
+                            <form onsubmit="submitForm(event)" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div class="form-group">
+                                    <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Full Name *</label>
+                                    <input type="text" id="name" name="name" required class="form-control" placeholder="Enter your full name" style="width: 100%; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); font-size: 1rem;">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Email Address *</label>
+                                    <input type="email" id="email" name="email" required class="form-control" placeholder="Enter your email address" style="width: 100%; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); font-size: 1rem;">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Subject *</label>
+                                    <input type="text" id="subject" name="subject" required class="form-control" placeholder="What's this about?" style="width: 100%; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); font-size: 1rem;">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Message *</label>
+                                    <textarea id="message" name="message" required rows="6" class="form-control" placeholder="Tell me about your project or inquiry..." style="width: 100%; padding: 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--bg-secondary); color: var(--text-primary); font-size: 1rem; resize: vertical;"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; background: var(--gradient-primary); color: white; border: none; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem;">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Java Developer Portfolio. Built with Angular & Spring Boot.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content fade-in">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <div id="modalTech" class="project-tech"></div>
+            <div id="modalLinks" class="project-links"></div>
+            <div id="modalExperience" style="color:var(--text-muted); margin-bottom: 1rem;"></div>
+            <button class="btn btn-primary" onclick="closeProjectModal()" style="margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Global variables to store data
+        let profileData = null;
+        let projectsData = [];
+
+        // Fetch data from backend on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProfileData();
+            loadProjectsData();
+        });
+
+        // Load profile data from backend
+        async function loadProfileData() {
+            try {
+                const response = await fetch('/api/profile');
+                if (response.ok) {
+                    profileData = await response.json();
+                    updateProfileUI();
+                } else {
+                    console.error('Failed to load profile data');
+                }
+            } catch (error) {
+                console.error('Error loading profile data:', error);
+            }
+        }
+
+        // Load projects data from backend
+        async function loadProjectsData() {
+            try {
+                const response = await fetch('/api/projects');
+                if (response.ok) {
+                    projectsData = await response.json();
+                    updateProjectsUI();
+                } else {
+                    console.error('Failed to load projects data');
+                }
+            } catch (error) {
+                console.error('Error loading projects data:', error);
+            }
+        }
+
+        // Update profile UI with backend data
+        function updateProfileUI() {
+            if (!profileData) return;
+
+            // Update hero section
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                heroTitle.textContent = profileData.name || 'Java Developer';
+            }
+
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            if (heroSubtitle) {
+                heroSubtitle.textContent = profileData.title || 'Full Stack Developer specializing in Java, Spring Boot, and modern web technologies';
+            }
+
+            // Update about section
+            const aboutContent = document.querySelector('#about .contact-content > div:first-child p:first-child');
+            if (aboutContent && profileData.bio) {
+                aboutContent.textContent = profileData.bio;
+            }
+
+            // Update profile card
+            const profileName = document.querySelector('#about .card h3');
+            if (profileName) {
+                profileName.textContent = profileData.name || 'Your Name';
+            }
+
+            const profileTitle = document.querySelector('#about .card p');
+            if (profileTitle) {
+                profileTitle.textContent = profileData.title || 'Senior Java Developer';
+            }
+
+            // Update stats if available
+            if (profileData.yearsOfExperience) {
+                const experienceElement = document.querySelector('#about .card span[style*="font-size: 1.5rem"]');
+                if (experienceElement) {
+                    experienceElement.textContent = profileData.yearsOfExperience + '+';
+                }
+            }
+        }
+
+        // Update projects UI with backend data
+        function updateProjectsUI() {
+            if (!projectsData || projectsData.length === 0) return;
+            const projectsGrid = document.querySelector('.projects-grid');
+            if (!projectsGrid) return;
+            projectsGrid.innerHTML = '';
+            projectsData.forEach((project, idx) => {
+                const projectCard = createProjectCard(project, idx);
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+
+        // Create a project card element
+        function createProjectCard(project, idx) {
+            const card = document.createElement('div');
+            card.className = 'project-card fade-in';
+            
+            // Get company-specific image based on project title
+            const companyImage = getCompanyImage(project.title);
+            
+            card.innerHTML = `
+                <div class="project-image">
+                    ${companyImage.endsWith('.svg') ? 
+                        `<object data="${companyImage}" type="image/svg+xml" style="width: 100%; height: 100%;"></object>` :
+                        `<img src="${companyImage}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem;">`
+                    }
+                </div>
+                <div class="project-content">
+                    <h3>${project.title}</h3>
+                    <div class="project-links">
+                        <button class="btn btn-secondary" onclick="openProjectModal(${JSON.stringify(project).replace(/"/g, '&quot;')})">📋 View Details</button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Get company-specific image based on project title
+        function getCompanyImage(projectTitle) {
+            const companyImages = {
+                'Capital One': '/images/capital-one-logo.png',
+                'CitizensBank': '/images/citizens-bank-logo.svg',
+                'American Express': '/images/amex-logo.png',
+                'Indiana State University': '/images/indiana-state-logo.svg',
+                'Niduss HR Services': '/images/niduss-hr-photo.jpg',
+                'MS': '/images/ms-project-photo.jpg',
+                'BE': '/images/be-project-photo.jpg'
+            };
+            
+            // Find matching company
+            for (const [company, image] of Object.entries(companyImages)) {
+                if (projectTitle.includes(company)) {
+                    return image;
+                }
+            }
+            
+            // Default image for unknown companies
+            return '/images/capital-one-logo.png';
+        }
+
+        // Theme toggle functionality
+        let isDarkTheme = true;
+        function toggleTheme() {
+            isDarkTheme = !isDarkTheme;
+            document.documentElement.setAttribute('data-theme', isDarkTheme ? 'dark' : 'light');
+            const toggleBtn = document.querySelector('.theme-toggle');
+            toggleBtn.innerHTML = isDarkTheme ? '🌙' : '☀️';
+            toggleBtn.title = isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        }
+        // Smooth page transitions
+        function showPage(pageId) {
+            const currentPage = document.querySelector('.page.active');
+            const targetPage = document.getElementById(pageId);
+            
+            if (currentPage && currentPage !== targetPage) {
+                currentPage.classList.add('slide-out');
+                setTimeout(() => {
+                    currentPage.classList.remove('active', 'slide-out');
+                    targetPage.classList.add('active');
+                }, 300);
+            } else {
+                targetPage.classList.add('active');
+            }
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+
+        // Handle phone click - open call app on mobile, show number on desktop
+        function handlePhoneClick(event) {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // On mobile, let the tel: link work normally to open call app
+                return true;
+            } else {
+                // On desktop, prevent default and show a message
+                event.preventDefault();
+                alert('📞 Phone: +1 (812) 223-2110\n\nThanks for your interest! Please call this number to get in touch.');
+                return false;
+            }
+        }
+
+        async function submitForm(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const contactData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+
+            try {
+                const response = await fetch('/api/contacts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(contactData)
+                });
+
+                if (response.ok) {
+                    alert('Thank you for your message! I\'ll get back to you soon.');
+                    event.target.reset();
+                } else {
+                    alert('There was an error sending your message. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('There was an error sending your message. Please try again.');
+            }
+        }
+
+        // Fade-in animation for sections and cards
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.section, .hero, .card, .project-card').forEach(function(el, i) {
+                setTimeout(() => el.classList.add('fade-in'), 100 + i * 80);
+            });
+        });
+
+        // Modal logic - Simplified and robust
+        function openProjectModal(project) {
+            console.log('Opening modal for:', project.title);
+            
+            // Get modal elements
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalTech = document.getElementById('modalTech');
+            const modalLinks = document.getElementById('modalLinks');
+            const modalExperience = document.getElementById('modalExperience');
+            
+            // Set modal content
+            modalTitle.textContent = project.title;
+            const description = project.fullDescription || project.description;
+            modalDescription.textContent = description;
+            modalTech.innerHTML = project.technologies ? project.technologies.split(',').map(tech => `<span class='tech-tag'>${tech.trim()}</span>`).join('') : '';
+            modalLinks.innerHTML =
+                (project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="btn btn-secondary">📁 GitHub</a>` : '') +
+                (project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" class="btn btn-primary">🌐 Live Demo</a>` : '');
+            modalExperience.textContent = project.experienceDuration ? `Experience: ${project.experienceDuration}` : '';
+            
+            // Show modal with multiple approaches
+            modal.style.display = 'flex';
+            modal.style.visibility = 'visible';
+            modal.style.opacity = '1';
+            modal.classList.add('active');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            console.log('Modal should be visible now');
+        }
+        
+        function closeProjectModal() {
+            console.log('Closing modal');
+            
+            const modal = document.getElementById('projectModal');
+            
+            // Hide modal with multiple approaches
+            modal.style.display = 'none';
+            modal.style.visibility = 'hidden';
+            modal.style.opacity = '0';
+            modal.classList.remove('active');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+            
+            console.log('Modal should be hidden now');
+        }
+        
+        // Initialize modal event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Setting up modal event listeners');
+            
+            const modal = document.getElementById('projectModal');
+            
+            // Close on outside click
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeProjectModal();
+                }
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    closeProjectModal();
+                }
+            });
+            
+            // Prevent modal from closing when clicking inside content
+            const modalContent = modal.querySelector('.modal-content');
+            if (modalContent) {
+                modalContent.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            }
+        });
+
+        // Enhanced project details function with colorful skills
+        function showProjectDetails(title, bulletPoints, technologies, duration) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalTech = document.getElementById('modalTech');
+            const modalLinks = document.getElementById('modalLinks');
+            const modalExperience = document.getElementById('modalExperience');
+            
+            // Set modal content with enhanced styling
+            modalTitle.textContent = title;
+            modalTitle.style.color = 'var(--text-primary)';
+            modalTitle.style.fontSize = '1.75rem';
+            modalTitle.style.fontWeight = '600';
+            modalTitle.style.marginBottom = '1.5rem';
+            
+            // Create bullet points instead of summary
+            modalDescription.innerHTML = '<ul style="list-style: none; padding: 0; margin: 0;">' + 
+                bulletPoints.map(point => 
+                    `<li style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+                        <span style="position: absolute; left: 0; top: 0.75rem; width: 8px; height: 8px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);"></span>
+                        ${point}
+                    </li>`
+                ).join('') + '</ul>';
+            modalDescription.style.marginBottom = '2rem';
+            
+            // Create colorful technology tags
+            const colorSchemes = [
+                { bg: 'linear-gradient(135deg, #667eea, #764ba2)', text: 'white' },
+                { bg: 'linear-gradient(135deg, #f093fb, #f5576c)', text: 'white' },
+                { bg: 'linear-gradient(135deg, #4facfe, #00f2fe)', text: 'white' },
+                { bg: 'linear-gradient(135deg, #43e97b, #38f9d7)', text: 'white' },
+                { bg: 'linear-gradient(135deg, #fa709a, #fee140)', text: 'white' },
+                { bg: 'linear-gradient(135deg, #a8edea, #fed6e3)', text: '#333' },
+                { bg: 'linear-gradient(135deg, #ffecd2, #fcb69f)', text: '#333' },
+                { bg: 'linear-gradient(135deg, #ff9a9e, #fecfef)', text: 'white' },
+                { bg: 'linear-gradient(135deg, #a18cd1, #fbc2eb)', text: 'white' },
+                { bg: 'linear-gradient(135deg, #fad0c4, #ffd1ff)', text: '#333' }
+            ];
+            
+            modalTech.innerHTML = '<h4 style="color: var(--text-primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">Technologies Used:</h4>' +
+                technologies.map((tech, index) => {
+                    const colorScheme = colorSchemes[index % colorSchemes.length];
+                    return `<span class="tech-tag" style="background: ${colorScheme.bg}; color: ${colorScheme.text}; padding: 0.75rem 1.25rem; border-radius: 1rem; font-size: 0.9rem; font-weight: 600; margin: 0.5rem; display: inline-block; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.3s ease; cursor: default;">${tech}</span>`;
+                }).join('');
+            modalTech.style.marginBottom = '2rem';
+            
+            // Set experience duration
+            modalExperience.textContent = `Project Duration: ${duration}`;
+            modalExperience.style.color = 'var(--text-muted)';
+            modalExperience.style.fontSize = '0.9rem';
+            modalExperience.style.marginBottom = '2rem';
+            modalExperience.style.padding = '0.75rem 1rem';
+            modalExperience.style.background = 'var(--bg-secondary)';
+            modalExperience.style.borderRadius = '0.5rem';
+            modalExperience.style.border = '1px solid var(--border-color)';
+            
+            // Create only close button (removed GitHub and live demo links)
+            modalLinks.innerHTML = `
+                <button onclick="closeProjectModal()" class="btn btn-primary" style="padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden;">
+                    <span style="font-size: 1.1rem; z-index: 2;">✕</span>
+                    <span style="z-index: 2;">Close</span>
+                    <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; z-index: 1;"></div>
+                </button>
+            `;
+            
+            // Show modal with enhanced styling
+            modal.style.display = 'flex';
+            modal.style.visibility = 'visible';
+            modal.style.opacity = '1';
+            modal.classList.add('active');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Add subtle animation
+            const modalContent = modal.querySelector('.modal-content');
+            if (modalContent) {
+                modalContent.style.transform = 'scale(0.9)';
+                modalContent.style.opacity = '0';
+                setTimeout(() => {
+                    modalContent.style.transform = 'scale(1)';
+                    modalContent.style.opacity = '1';
+                }, 10);
+            }
+        }
+
+        // Remove click game functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove avatar click game
+            const avatarHero = document.getElementById('avatarHero');
+            if (avatarHero) {
+                avatarHero.remove();
+            }
+            
+            // Fade-in animation for sections and cards
+            document.querySelectorAll('.section, .hero, .card, .project-card').forEach(function(el, i) {
+                setTimeout(() => el.classList.add('fade-in'), 100 + i * 80);
+            });
+        });
+    </script>
+</body>
+</html> 
